@@ -11,10 +11,10 @@ router.get("/:id?", async (req, res) => {
         const id = req.params.id;
 
         if (id) {
-            const chirp = await db.confession.five(id);
+            const chirp = await db.confession.Users_one(id);
             res.json(chirp);
         } else {
-            const chirps = await db.confession.all5();
+            const chirps = await db.confession.Users_all();
             res.json(chirps);
         }
     } catch (error) {

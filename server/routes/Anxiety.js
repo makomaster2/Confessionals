@@ -9,10 +9,10 @@ router.get("/:id?", async (req, res) => {
         const id = req.params.id;
 
         if (id) {
-            const chirp = await db.confession.four(id);
+            const chirp = await db.confession.Anxiety_one(id);
             res.json(chirp);
         } else {
-            const chirps = await db.confession.all4();
+            const chirps = await db.confession.Anxiety_all();
             res.json(chirps);
         }
     } catch (error) {
@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     try {
         const body = req.body;
 
-        const dbRes = await db.confession.insert4(body.Anxiety_id, body.Anxiety_post);
+        const dbRes = await db.confession.Anxiety_insert(body.Anxiety_id, body.Anxiety_post);
         res.status(200).json(dbRes);
     } catch (error) {
         console.log(error)
@@ -37,7 +37,7 @@ router.delete("/:id", async (req, res) => {
     try {
         const id = req.params.id;
 
-        const dbRes = await db.confession.destroy4(id);
+        const dbRes = await db.confession.Anxiety_destroy(id);
 
         res.status(200).json(dbRes);
     } catch (error) {
@@ -51,7 +51,7 @@ router.put("/:id", async (req, res) => {
         const id = req.params.id;
         const content = req.body.Anxiety_post;
 
-        const dbRes = await db.confession.edit4(id, content);
+        const dbRes = await db.confession.Anxiety_edit(id, content);
 
         res.status(200).json(dbRes);
     } catch (error) {

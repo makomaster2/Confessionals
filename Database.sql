@@ -26,4 +26,4 @@ USE `Confessional`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-07 13:11:57
+-- Dump completed on 2022-04-07 16:42:47

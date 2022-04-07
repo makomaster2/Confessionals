@@ -12,10 +12,10 @@ router.get("/:id?", async (req, res) => {
         const id = req.params.id;
 
         if (id) {
-            const chirp = await db.confession.two(id);
+            const chirp = await db.confession.Depression_one(id);
             res.json(chirp);
         } else {
-            const chirps = await db.confession.all2();
+            const chirps = await db.confession.Depression_all();
             res.json(chirps);
         }
     } catch (error) {
@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     try {
         const body = req.body;
 
-        const dbRes = await db.confession.insert2(body.Depression_id, body.Depression_post);
+        const dbRes = await db.confession.Depression_insert(body.Depression_id, body.Depression_post);
         res.status(200).send(dbRes);
     } catch (error) {
         console.log(error)
@@ -40,7 +40,7 @@ router.delete("/:id", async (req, res) => {
     try {
         const id = req.params.id;
 
-        const dbRes = await db.confession.destroy2(id);
+        const dbRes = await db.confession.Depression_destroy(id);
 
         res.status(200).json(dbRes);
     } catch (error) {
@@ -54,7 +54,7 @@ router.put("/:id", async (req, res) => {
         const id = req.params.id;
         const content = req.body.Depression_post;
 
-        const dbRes = await db.confession.edit2(id, content);
+        const dbRes = await db.confession.Depression_edit(id, content);
 
         res.status(200).json(dbRes);
     } catch (error) {
