@@ -128,13 +128,11 @@ body {
 	padding: 20px;
 }
 
-
 .me {
 	margin-right: 2px;
 	font-size: 8px;
 	vertical-align: middle;
 }
-
 
 /* .me {
 	color: #1d8ecd;
@@ -197,4 +195,11 @@ body {
 		height: calc(100vh - 350px);
 		overflow-x: auto;
 	}
+}
+
+#submit-btn {
+	box-shadow: none;
+}
+#submit-btn:hover {
+	background-color: #0037ff;
 }

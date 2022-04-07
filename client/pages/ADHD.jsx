@@ -4,26 +4,9 @@ import RecievedTemplate from '../components/RecievedTemplate.jsx';
 // import MessageTemplate from '../components/msgTemplate';
 
 const ADHDApp = () => {
-	return (
-		// <>
-		//     {/* //Create Message Input */}
-		//     <div className="container">
-		//     <div id="message-display" className="p-3">
-		//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
-		//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
-		//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
-		//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
-		//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
-		//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
-		//     </div>
-		//     <div id="message-input" className="d-flex justify-content-center w-100">
-		//         <input type="text" className="col-10" />
-		//         <input type="submit" className="col-2 mx-1 btn btn-primary" />
-		//     </div>
-		//     </div>
-		//     {/* //Create Submit Button */}
-		// </>
+	const [message, setMessage] = useState([]);
 
+	return (
 		<>
 			<div className='container'>
 				<div className='row clearfix'>
@@ -42,9 +25,11 @@ const ADHDApp = () => {
 								<div className='chat-message clearfix'>
 									<div className='input-group mb-0'>
 										<div className='input-group-prepend'>
-											<span className='input-group-text'>
-												<i className='fa fa-send'>Send</i>
-											</span>
+											<input
+												type={'submit'}
+												className='btn btn-primary'
+												id='submit-btn'
+											></input>
 										</div>
 										<input
 											type='text'
@@ -62,3 +47,22 @@ const ADHDApp = () => {
 	);
 };
 export default ADHDApp;
+
+// <>
+//     {/* //Create Message Input */}
+//     <div className="container">
+//     <div id="message-display" className="p-3">
+//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
+//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
+//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
+//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
+//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
+//         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis mollitia autem atque, quis vitae nisi corrupti, asperiores numquam, tenetur nulla nesciunt repellendus omnis eius quos obcaecati sint expedita id a.</p>
+//     </div>
+//     <div id="message-input" className="d-flex justify-content-center w-100">
+//         <input type="text" className="col-10" />
+//         <input type="submit" className="col-2 mx-1 btn btn-primary" />
+//     </div>
+//     </div>
+//     {/* //Create Submit Button */}
+// </>
