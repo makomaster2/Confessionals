@@ -1,0 +1,20 @@
+#message-display {
+    border: 2px solid white;
+    height: 75%;
+    color: white;
+}
+
+#message-input {
+    width: 100%;
+}
+
+input {
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+} 
+
+body {
+    background-color: black;
+}
+
