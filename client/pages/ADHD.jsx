@@ -1,9 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import SentTemplate from '../components/SentTemplate.jsx';
 import RecievedTemplate from '../components/RecievedTemplate.jsx';
 
-const ADHDApp = () => {
-	const [message, setMessage] = useState([]);
+const ADHDPage = () => {
+	const navigate = useNavigate();
+	const [chirp, setChirp] = useState({});
+	const [message, setMessage] = useState('');
+	const { id } = useParams();
+
+	useEffect(() => {
+		fetch(`http://localhost:3000/api/ADHD/${id}`)
+			.then(res => res.json())
+			.then(chirp => {
+				setMessage(chirp[0].content);
+				setChirp(chirp[0]);
+			})
+			.catch(err => console.log(err));
+	}, []);
+
+	const handleMessageChange = e => setMessage(e.target.value);
+
+	const deleteChirp = id => {
+		fetch(`http://localhost:3000/api/ADHD/${id}`, { method: 'DELETE' })
+			.then(res => (res.ok ? navigate('/') : null))
+			.catch(err => console.log(err));
+	};
+
+	const editChirp = (id, ADHD_post) => {
+		const editChirpBody = {
+			content: ADHD_post,
+		};
+
+		fetch(`http://localhost:3000/api/ADHD/${id}`, {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(editChirpBody),
+		})
+			.then(res => (res.ok ? navigate('/') : null))
+			.catch(err => console.log(err));
+	};
 
 	return (
 		<>
@@ -45,4 +81,4 @@ const ADHDApp = () => {
 		</>
 	);
 };
-export default ADHDApp;
+export default ADHDPage;
