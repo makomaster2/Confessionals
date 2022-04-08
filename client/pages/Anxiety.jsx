@@ -1,64 +1,84 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import SentTemplate from "../components/SentTemplate.jsx";
+import RecievedTemplate from "../components/RecievedTemplate.jsx";
 
 const AnxietyPage = () => {
-    
-    const [username, setUsername] = useState("");
-    const [newChirp, setChirp] = useState("");
-    const [chirpFeed, setFeed] = useState([]);
-    
-    const handleUsernameChange = e => {
-        setUsername(e.target.value);
-    }
+  const navigate = useNavigate();
+  const [chirp, setChirp] = useState({});
+  const [message, setMessage] = useState("");
+  const { id } = useParams();
 
-    const handleChirpChange = e => {
-        setChirp(e.target.value);
-    }
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/anxiety/${id}`)
+      .then((res) => res.json())
+      .then((chirp) => {
+        setMessage(chirp[0].content);
+        setChirp(chirp[0]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-    function handleAddChirp() {
-        const updateFeed = [
-            ...chirpFeed,
-            {
-                id: chirpFeed.length + 1,
-                user: "@" + username + ":",
-                chirp: newChirp
-            }
-        ];
-        setFeed(updateFeed);
+  const handleMessageChange = (e) => setMessage(e.target.value);
+
+  const deleteChirp = (id) => {
+    fetch(`http://localhost:3000/api/anxiety/${id}`, { method: "DELETE" })
+      .then((res) => (res.ok ? navigate("/") : null))
+      .catch((err) => console.log(err));
+  };
+
+  const editChirp = (id, content) => {
+    const editChirpBody = {
+      content: content,
     };
 
-    const chirpToFeed = e => {
-        e.preventDefault();
-        handleAddChirp();
-        setUsername("");
-        setChirp("");
-    };
+    fetch(`http://localhost:3000/api/anxiety/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(editChirpBody),
+    })
+      .then((res) => (res.ok ? navigate("/") : null))
+      .catch((err) => console.log(err));
+  };
 
+  return (
+    <>
+      <div className="container">
+        <div className="row clearfix">
+          <div className="col-lg-12">
+            <div className="card chat-app">
+              <div className="chat">
+                <div className="chat-history">
+                  {/* Messages are stored in this unordered list. New messages will be added to list items in this list */}
+                  <ul className="m-b-0">
+                    <RecievedTemplate />
 
-
-    return (
-        <>
-            
-            <div className="d-flex flex-wrap justify-content-evenly container">
-                <div className="shadow p-3 mb-5 bg-body rounded align-self-start col-4">
-                    <form>
-                        <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon1"></span>
-                            <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value={username} onChange={handleUsernameChange} />
-                        </div>
-                        <div className="input-group mb-3">
-                            <span className="input-group-text"></span>
-                            <textarea className="form-control" placeholder="Your Thoughts..." aria-label="With textarea" value={newChirp} onChange={handleChirpChange}></textarea>
-                        </div>
-                        <button type="submit" onClick={chirpToFeed} className="btn btn-primary">Submit</button>
-                    </form>
+                    <SentTemplate />
+                  </ul>
                 </div>
-                <div className="shadow p-3 mb-5 bg-body rounded col-5">
-
-
+                {/* Input for SENT messages */}
+                <div className="chat-message clearfix">
+                  <div className="input-group mb-0">
+                    <div className="input-group-prepend">
+                      <input
+                        type={"submit"}
+                        className="btn btn-primary"
+                        id="submit-btn"
+                      ></input>
+                    </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter text here..."
+                    />
+                  </div>
                 </div>
+              </div>
             </div>
-        </>
-    );
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 export default AnxietyPage;
