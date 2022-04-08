@@ -9,30 +9,30 @@ const AnxietyPage = () => {
 	const [message, setMessage] = useState('');
 	const { id } = useParams();
 
-	useEffect(() => {
-		fetch(`http://localhost:3000/api/Anxiety/${id}`)
-			.then(res => res.json())
-			.then(chirp => {
-				setMessage(chirp[0].content);
-				setChirp(chirp[0]);
-			})
-			.catch(err => console.log(err));
-	}, []);
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/anxiety/${id}`)
+      .then((res) => res.json())
+      .then((chirp) => {
+        setMessage(chirp[0].content);
+        setChirp(chirp[0]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
 	const handleMessageChange = e => setMessage(e.target.value);
 
-	const deleteChirp = id => {
-		fetch(`http://localhost:3000/api/Anxiety/${id}`, { method: 'DELETE' })
-			.then(res => (res.ok ? navigate('/') : null))
-			.catch(err => console.log(err));
-	};
+  const deleteChirp = (id) => {
+    fetch(`http://localhost:3000/api/anxiety/${id}`, { method: "DELETE" })
+      .then((res) => (res.ok ? navigate("/") : null))
+      .catch((err) => console.log(err));
+  };
 
-	const editChirp = (id, Anxiety_post) => {
-		const editChirpBody = {
-			content: Anxiety_post,
-		};
+  const editChirp = (id, anxiety_post) => {
+    const editChirpBody = {
+      content: anxiety_post,
+    };
 
-		fetch(`http://localhost:3000/api/Anxiety/${id}`, {
+		fetch(`http://localhost:3000/api/anxiety/${id}`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(editChirpBody),
@@ -81,4 +81,5 @@ const AnxietyPage = () => {
 		</>
 	);
 };
+
 export default AnxietyPage;
