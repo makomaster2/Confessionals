@@ -1,42 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-//Changed all chirp & Chirp to confession & Confession
+//Changed all chirp & Chirp to chirp & Chirp
 
 
 const Depression = () => {
     const navigate = useNavigate();
-    const [confession, setConfession] = useState({});
+    const [chirp, setChirp] = useState({});
     const [message, setMessage] = useState("")
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/confessions/${id}`)
+        fetch(`http://localhost:3000/api/chirps/${id}`)
             .then(res => res.json())
-            .then(confession => {
-                setMessage(confession[0].content);
-                setConfession(confession[0]);
+            .then(chirp => {
+                setMessage(chirp[0].content);
+                setChirp(chirp[0]);
             })
             .catch(err => console.log(err));
     }, []);
 
     const handleMessageChange = e => setMessage(e.target.value);
 
-    const deleteConfession = id => {
-        fetch(`http://localhost:3000/api/confessions/${id}`, { method: "DELETE" })
+    const deleteChirp = id => {
+        fetch(`http://localhost:3000/api/chirps/${id}`, { method: "DELETE" })
             .then(res => res.ok ? navigate("/") : null)
             .catch(err => console.log(err));
     };
 
-    const editConfession = (id, content) => {
-        const editConfessionBody = {
+    const editChirp = (id, content) => {
+        const editChirpBody = {
             content: content
         };
 
-        fetch(`http://localhost:3000/api/confessions/${id}`, {
+        fetch(`http://localhost:3000/api/chirps/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(editConfessionBody)
+            body: JSON.stringify(editChirpBody)
         })
             .then(res => res.ok ? navigate("/") : null)
             .catch(err => console.log(err));
@@ -65,14 +65,14 @@ const Depression = () => {
                             cols="30"
                             rows="10"
                         ></textarea>
-                        <button className="btn btn-dark mx-2" onClick={() => editConfession(id, message)}>
+                        <button className="btn btn-dark mx-2" onClick={() => editChirp(id, message)}>
                             Save
                         </button>
-                        <button className="btn btn-dark mx-2" onClick={() => deleteConfession(id)}>
+                        <button className="btn btn-dark mx-2" onClick={() => deleteChirp(id)}>
                             Delete
                         </button>
                         {/*need to add a timestamp + edit notification to the message body when edits are submitted*/}
-                        <button className="btn btn-dark mx-2" onClick={() => editConfession(message)}>
+                        <button className="btn btn-dark mx-2" onClick={() => editChirp(message)}>
                             Edit
                         </button>
                     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
-import Navbar from "./pages/Navbar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import Home from "./pages/Home.jsx";
 import ADHA from "./pages/ADHA.jsx";
 import Anxiety from "./pages/Anxiety.jsx";
