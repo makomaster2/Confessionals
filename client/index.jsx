@@ -1,9 +1,10 @@
-import React from 'react';
-import { render } from 'react-dom';
+// import React from 'react';
+// import { render } from 'react-dom';
 
-import '@babel/polyfill';
-import App from './App.jsx';
+// import '@babel/polyfill';
+// import App from './App.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '../public/styles.css'
 
-render(<App />, document.getElementById("root"));
+// render(<App />, document.getElementById("root"));
