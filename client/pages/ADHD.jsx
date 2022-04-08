@@ -3,14 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import SentTemplate from '../components/SentTemplate.jsx';
 import RecievedTemplate from '../components/RecievedTemplate.jsx';
 
-const DepressionPage = () => {
+const ADHDPage = () => {
 	const navigate = useNavigate();
 	const [chirp, setChirp] = useState({});
 	const [message, setMessage] = useState('');
 	const { id } = useParams();
 
 	useEffect(() => {
-		fetch(`http://localhost:3000/api/Depression/${id}`)
+		fetch(`http://localhost:3000/api/ADHD/${id}`)
 			.then(res => res.json())
 			.then(chirp => {
 				setMessage(chirp[0].content);
@@ -22,17 +22,17 @@ const DepressionPage = () => {
 	const handleMessageChange = e => setMessage(e.target.value);
 
 	const deleteChirp = id => {
-		fetch(`http://localhost:3000/api/Depression/${id}`, { method: 'DELETE' })
+		fetch(`http://localhost:3000/api/ADHD/${id}`, { method: 'DELETE' })
 			.then(res => (res.ok ? navigate('/') : null))
 			.catch(err => console.log(err));
 	};
 
-	const editChirp = (id, Depression_post) => {
+	const editChirp = (id, ADHD_post) => {
 		const editChirpBody = {
-			content: Depression_post,
+			content: ADHD_post,
 		};
 
-		fetch(`http://localhost:3000/api/Depression/${id}`, {
+		fetch(`http://localhost:3000/api/ADHD/${id}`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(editChirpBody),
@@ -81,4 +81,4 @@ const DepressionPage = () => {
 		</>
 	);
 };
-export default DepressionPage;
+export default ADHDPage;

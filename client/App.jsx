@@ -4,11 +4,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
 import Home from "./pages/Home.jsx";
-import ADHA from "./pages/ADHA.jsx";
-import Anxiety from "./pages/Anxiety.jsx";
-import Depression from "./pages/Depression.jsx";
-import Rage from "./pages/Rage.jsx";
-
+import AnxietyPage from "./pages/Anxiety.jsx";
+import DepressionPage from "./pages/Depression.jsx";
+import ADHDPage from "./pages/ADHD.jsx";
+import RagePage from "./pages/Rage.jsx";
 
 const App = () => {
     return (
@@ -17,11 +16,16 @@ const App = () => {
         {/* adding depression page route */}
             <Navbar />
             <Routes>
+                //Add routes for pages
                 <Route path="/" element={<Home />} />
-                <Route path="/depression" element={<depression />} />
-                <Route path="/adha" element={<ADHA />} />
-                <Route path="/anxiety" element={<Anxiety />} />
-                <Route path="/rage" element={<Rage />} />
+
+
+                <Route path="/adhd" element={<ADHDPage />} />
+                <Route path="/anxiety" element={<AnxietyPage />} />
+                <Route path="/depression" element={<DepressionPage />} />
+                <Route path="/rage" element={<RagePage />} />
+                <Route path="*" element={<h1 class="text-center">404 This page doesn't exist</h1>} />            
+
             </Routes>
         </BrowserRouter>
     );

@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `confessionalsdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `confessionalsdb`;
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `Confessional` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `Confessional`;
+-- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
 --
--- Host: localhost    Database: confessionalsdb
+-- Host: 127.0.0.1    Database: Confessional
 -- ------------------------------------------------------
--- Server version	5.7.37-log
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,4 +26,4 @@ USE `confessionalsdb`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 14:09:29
+-- Dump completed on 2022-04-07 16:42:47
