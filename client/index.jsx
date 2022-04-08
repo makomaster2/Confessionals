@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import App from './App.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "./styles.css"
 import '../public/styles.css'
 
 render(<App />, document.getElementById("root"));
