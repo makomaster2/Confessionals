@@ -9,32 +9,6 @@ const AnxietyPage = () => {
 	const [message, setMessage] = useState('');
 	const { id } = useParams();
 
-<<<<<<< HEAD
-	useEffect(() => {
-		fetch(`http://localhost:3000/api/Anxiety/${id}`)
-			.then(res => res.json())
-			.then(chirp => {
-				setMessage(chirp[0].content);
-				setChirp(chirp[0]);
-			})
-			.catch(err => console.log(err));
-	}, []);
-
-	const handleMessageChange = e => setMessage(e.target.value);
-
-	const deleteChirp = id => {
-		fetch(`http://localhost:3000/api/Anxiety/${id}`, { method: 'DELETE' })
-			.then(res => (res.ok ? navigate('/') : null))
-			.catch(err => console.log(err));
-	};
-
-	const editChirp = (id, Anxiety_post) => {
-		const editChirpBody = {
-			content: Anxiety_post,
-		};
-
-		fetch(`http://localhost:3000/api/Anxiety/${id}`, {
-=======
   useEffect(() => {
     fetch(`http://localhost:3000/api/anxiety/${id}`)
       .then((res) => res.json())
@@ -59,7 +33,6 @@ const AnxietyPage = () => {
     };
 
 		fetch(`http://localhost:3000/api/anxiety/${id}`, {
->>>>>>> 7e639088fb5c8cd3444973ecd2a7f3a5bf03e7ac
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(editChirpBody),
@@ -108,8 +81,5 @@ const AnxietyPage = () => {
 		</>
 	);
 };
-<<<<<<< HEAD
-=======
 
->>>>>>> 7e639088fb5c8cd3444973ecd2a7f3a5bf03e7ac
 export default AnxietyPage;
