@@ -1,164 +1,84 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import SentTemplate from '../components/SentTemplate.jsx';
+import RecievedTemplate from '../components/RecievedTemplate.jsx';
 
-const Depression = () => {
-    const navigate = useNavigate();
-    const [chirp, setChirp] = useState({});
-    const [message, setMessage] = useState("")
-    const { id } = useParams();
+const DepressionPage = () => {
+	const navigate = useNavigate();
+	const [chirp, setChirp] = useState({});
+	const [message, setMessage] = useState('');
+	const { id } = useParams();
 
-    useEffect(() => {
-        fetch(`http://localhost:3000/api/chirps/${id}`)
-            .then(res => res.json())
-            .then(chirp => {
-                setMessage(chirp[0].content);
-                setChirp(chirp[0]);
-            })
-            .catch(err => console.log(err));
-    }, []);
+	useEffect(() => {
+		fetch(`http://localhost:3000/api/Depression/${id}`)
+			.then(res => res.json())
+			.then(chirp => {
+				setMessage(chirp[0].content);
+				setChirp(chirp[0]);
+			})
+			.catch(err => console.log(err));
+	}, []);
 
-    const handleMessageChange = e => setMessage(e.target.value);
+	const handleMessageChange = e => setMessage(e.target.value);
 
-    const deleteChirp = id => {
-        fetch(`http://localhost:3000/api/chirps/${id}`, { method: "DELETE" })
-            .then(res => res.ok ? navigate("/") : null)
-            .catch(err => console.log(err));
-    };
+	const deleteChirp = id => {
+		fetch(`http://localhost:3000/api/Depression/${id}`, { method: 'DELETE' })
+			.then(res => (res.ok ? navigate('/') : null))
+			.catch(err => console.log(err));
+	};
 
-    const editChirp = (id, content) => {
-        const editChirpBody = {
-            content: content
-        };
+	const editChirp = (id, Depression_post) => {
+		const editChirpBody = {
+			content: Depression_post,
+		};
 
-        fetch(`http://localhost:3000/api/chirps/${id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(editChirpBody)
-        })
-            .then(res => res.ok ? navigate("/") : null)
-            .catch(err => console.log(err));
-    };
+		fetch(`http://localhost:3000/api/Depression/${id}`, {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(editChirpBody),
+		})
+			.then(res => (res.ok ? navigate('/') : null))
+			.catch(err => console.log(err));
+	};
 
-    return (
-        <>
-            <div className="container text-body text-center">
-                <div className="row">
-                    <div className="col-12 p-0">
-                        <nav>
-                            <h1>Depression Forum</h1>
-                        </nav>
-                    </div>
-                </div>
+	return (
+		<>
+			<div className='container'>
+				<div className='row clearfix'>
+					<div className='col-lg-12'>
+						<div className='card chat-app'>
+							<div className='chat'>
+								<div className='chat-history'>
+									{/* Messages are stored in this unordered list. New messages will be added to list items in this list */}
+									<ul className='m-b-0'>
+										<RecievedTemplate />
 
-                <div className="row">
-                    <div className="form-group mb-2">
-                        <textarea
-                            className="form-control mb-2"
-                            aria-label="With textarea"
-                            placeholder="(500 characters max)"
-                            value={message}
-                            onChange={handleMessageChange}
-                            cols="30"
-                            rows="10"
-                        ></textarea>
-                        <button className="btn btn-dark mx-2" onClick={() => editChirp(id, message)}>
-                            Save
-                        </button>
-                        <button className="btn btn-dark mx-2" onClick={() => deleteChirp(id)}>
-                            Delete
-                        </button>
-                        {/*need to add a timestamp + edit notification to the message body when edits are submitted*/}
-                        <button className="btn btn-dark mx-2" onClick={() => editChirp(message)}>
-                            Edit
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+										<SentTemplate />
+									</ul>
+								</div>
+								{/* Input for SENT messages */}
+								<div className='chat-message clearfix'>
+									<div className='input-group mb-0'>
+										<div className='input-group-prepend'>
+											<input
+												type={'submit'}
+												className='btn btn-primary'
+												id='submit-btn'
+											></input>
+										</div>
+										<input
+											type='text'
+											className='form-control'
+											placeholder='Enter text here...'
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 };
-
-export default Depression;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default DepressionPage;
