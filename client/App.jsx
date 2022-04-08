@@ -10,9 +10,9 @@ const App = () => {
             <Routes>
                 //Add routes for pages
                 <Route path="/" element={<Home />} />
+                <Route path="/adhd" element={<ADHDApp />} />
                 <Route path="/depression" element={<Depression />} />
                 <Route path="*" element={<h1 class="text-center">404 This page doesn't exist</h1>} />            
-                <Route path="/adhd" element={<ADHDApp />} />
             </Routes>
         </BrowserRouter>
     )
