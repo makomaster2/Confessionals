@@ -3,7 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import SentTemplate from "../components/SentTemplate.jsx";
 import RecievedTemplate from "../components/RecievedTemplate.jsx";
 
+
 const AnxietyPage = () => {
+  
   const navigate = useNavigate();
   const [chirp, setChirp] = useState({});
   const [message, setMessage] = useState("");
