@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -7,9 +8,11 @@ const Home = () => {
                 <div className="row">
                     Home Page
                 </div>
+                
             </div>
         </>
     );
-}
+};
 
 export default Home;
+

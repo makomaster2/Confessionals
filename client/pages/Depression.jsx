@@ -1,54 +1,85 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+
+//Changed all chirp & Chirp to confession & Confession
+
 
 const Depression = () => {
-    return (
+    const navigate = useNavigate();
+    const [confession, setConfession] = useState({});
+    const [message, setMessage] = useState("")
+    const { id } = useParams();
 
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/confessions/${id}`)
+            .then(res => res.json())
+            .then(confession => {
+                setMessage(confession[0].content);
+                setConfession(confession[0]);
+            })
+            .catch(err => console.log(err));
+    }, []);
+
+    const handleMessageChange = e => setMessage(e.target.value);
+
+    const deleteConfession = id => {
+        fetch(`http://localhost:3000/api/confessions/${id}`, { method: "DELETE" })
+            .then(res => res.ok ? navigate("/") : null)
+            .catch(err => console.log(err));
+    };
+
+    const editConfession = (id, content) => {
+        const editConfessionBody = {
+            content: content
+        };
+
+        fetch(`http://localhost:3000/api/confessions/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(editConfessionBody)
+        })
+            .then(res => res.ok ? navigate("/") : null)
+            .catch(err => console.log(err));
+    };
+
+    return (
         <>
-        <h1>Depression Discussion</h1>
-        <h2>If you or someone else are in an immediate mental health emergency, the National Crisis Hotline has free, non-judmental, supportive services and counselors waiting to help. Do not hesistate to call (1-800-273-8255) or text (HOME to 741741) at anytime, day or night.</h2>
-        <h2>If you would like to seek continued mental health counseling, psychologytoday.com has extended search options and services to help pinpoint a certified mental health professional versed in your specific needs near you. </h2>
-    
-            <div className="container text-body text-left">
-                <div className="discussion">
-                    <div classname="col-12 p-0">
+            <div className="container text-body text-center">
+                <div className="row">
+                    <div className="col-12 p-0">
+                        
                         <nav>
-                            <img
-                                className="Logo"
-                                // src="?"
-                                alt="Confessions Logo"
-                            />
-                            <h1>Confessions - Depression</h1>
+                            <h1>Depression Forum</h1>
                         </nav>
                     </div>
                 </div>
+
                 <div className="row">
-                    <div className="form-group">
-                    
-                        <textarea>
-                            // add form spec
+                    <div className="form-group mb-2">
+                        <textarea
                             className="form-control mb-2"
                             aria-label="With textarea"
-                            placeholder="(800 characters max)"
+                            placeholder="(500 characters max)"
                             value={message}
                             onChange={handleMessageChange}
                             cols="30"
                             rows="10"
-
-                        </textarea>
+                        ></textarea>
+                        <button className="btn btn-dark mx-2" onClick={() => editConfession(id, message)}>
+                            Save
+                        </button>
+                        <button className="btn btn-dark mx-2" onClick={() => deleteConfession(id)}>
+                            Delete
+                        </button>
+                        {/*need to add a timestamp + edit notification to the message body when edits are submitted*/}
+                        <button className="btn btn-dark mx-2" onClick={() => editConfession(message)}>
+                            Edit
+                        </button>
                     </div>
-                </div>
-
-                    <input type="submit"> </input>
-                    
-                    </>
-                    
-                    {/* Depression Chat Page */}
-                    </div>
-
                 </div>
             </div>
         </>
-    );
-}
+    )
+};
 
 export default Depression;
