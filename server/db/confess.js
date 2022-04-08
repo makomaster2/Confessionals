@@ -1,33 +1,33 @@
 //This is an example of what would go in this file. Feel free to delete/overwrite these contents and rename the file. Remember to make a seperate file for each database table!
 
 import { Query } from "./index";
-//ADHD 
-const ADHD_all = () => Query("select * from ADHD");
-const ADHD_one = (ADHD_id) => Query("select * from ADHD where ADHD.ADHD_id = ?", [ADHD_id]);
-const ADHD_destroy = (ADHD_id) => Query("delete from ADHD where ADHD.ADHD_id = ?", [ADHD_id]);
-const ADHD_insert = (ADHD_id, ADHDpost) => Query("insert into ADHD (ADHD_id, ADHDpost) values (?, ?)", [ADHD_id, ADHDpost]);
-const ADHD_edit = (ADHD_id, ADHDpost) => Query("UPDATE ADHD SET ADHDpost = ? WHERE ADHD.ADHD_id = ?", [ADHDpost, ADHD_id]);
-//Depression 
-const Depression_all = () => Query("select * from Depression");
-const Depression_one = (Depression_id) => Query("select * from Depression where Depression.Depression_id = ?", [Depression_id]);
-const Depression_destroy = (Depression_id) => Query("delete from Depression where Depression.Depression_id = ?", [Depression_id]);
-const Depression_insert = (Depression_id, Depression_post) => Query("insert into Depression (Depression_id, Depression_post) values (?, ?)", [Depression_id, Depression_post]);
-const Depression_edit = (Depression_id, Depression_post) => Query("UPDATE Depression SET Depression_post = ? WHERE Depression.Depression_id = ?", [Depression_post, Depression_id]);
-//Rage 
-const Rage_all = () => Query("select * from Rage");
-const Rage_one = (Rage_id) => Query("select * from Rage where Rage.Rage_id = ?", [Rage_id]);
-const Rage_destroy = (Rage_id) => Query("delete from Rage where Rage.Rage_id = ?", [Rage_id]);
-const Rage_insert = (Rage_id, Rage_post) => Query("insert into Rage (Rage_id, Rage_post) values (?, ?)", [Rage_id, Rage_post]);
-const Rage_edit = (Rage_id, Rage_post) => Query("UPDATE Rage SET Rage_post = ? WHERE Rage.Rage_id = ?", [Rage_post, Rage_id]);
-//Anxiety 
-const Anxiety_all = () => Query("select * from Anxiety");
-const Anxiety_one = (Anxiety_id) => Query("select * from Anxiety where Anxiety.Anxiety_id = ?", [Anxiety_id]);
-const Anxiety_destroy = (Anxiety_id) => Query("delete from Anxiety where Anxiety.Anxiety_id = ?", [Anxiety_id]); 
-const Anxiety_insert = (Anxiety_id, Anxiety_post) => Query("insert into Anxiety (Anxiety_id, Anxiety_post) values (?, ?)", [Anxiety_id, Anxiety_post]);
-const Anxiety_edit = (Anxiety_id, Anxiety_post) => Query("UPDATE Anxiety SET Anxiety_post = ? WHERE Anxiety.Anxiety_id = ?", [Anxiety_post, Anxiety_id]);
-//Users 
-const Users_all = () => Query("select * from Users");
-const Users_one = (User_id) => Query("select * from Users where Users.User_id = ?", [User_id]);
+//adhd 
+const ADHD_all = () => Query("select * from adhd");
+const ADHD_one = (adhd_id) => Query("select * from adhd where adhd.adhd_id = ?", [adhd_id]);
+const ADHD_destroy = (adhd_id) => Query("delete from adhd where adhd.adhd_id = ?", [adhd_id]);
+const ADHD_insert = (adhd_id, adhd_post) => Query("insert into adhd (adhd_id, adhdpost) values (?, ?)", [adhd_id, adhd_post]);
+const ADHD_edit = (adhd_id, adhd_post) => Query("UPDATE adhd SET adhdpost = ? WHERE adhd.adhd_id = ?", [adhd_post, adhd_id]);
+//depression 
+const Depression_all = () => Query("select * from depression");
+const Depression_one = (depression_id) => Query("select * from depression where depression.depression_id = ?", [depression_id]);
+const Depression_destroy = (depression_id) => Query("delete from depression where depression.depression_id = ?", [depression_id]);
+const Depression_insert = (depression_id, depression_post) => Query("insert into depression (depression_id, depression_post) values (?, ?)", [depression_id, depression_post]);
+const Depression_edit = (depression_id, depression_post) => Query("UPDATE depression SET depression_post = ? WHERE depression.depression_id = ?", [depression_post, depression_id]);
+//rage 
+const Rage_all = () => Query("select * from rage");
+const Rage_one = (rage_id) => Query("select * from rage where rage.rage_id = ?", [rage_id]);
+const Rage_destroy = (rage_id) => Query("delete from rage where rage.rage_id = ?", [rage_id]);
+const Rage_insert = (rage_id, rage_post) => Query("insert into rage (rage_id, rage_post) values (?, ?)", [rage_id, rage_post]);
+const Rage_edit = (rage_id, rage_post) => Query("UPDATE rage SET rage_post = ? WHERE rage.rage_id = ?", [rage_post, rage_id]);
+//anxiety 
+const Anxiety_all = () => Query("select * from anxiety");
+const Anxiety_one = (anxiety_id) => Query("select * from anxiety where anxiety.anxiety_id = ?", [anxiety_id]);
+const Anxiety_destroy = (anxiety_id) => Query("delete from anxiety where anxiety.anxiety_id = ?", [anxiety_id]); 
+const Anxiety_insert = (anxiety_id, anxiety_post) => Query("insert into anxiety (anxiety_id, anxiety_post) values (?, ?)", [anxiety_id, anxiety_post]);
+const Anxiety_edit = (anxiety_id, anxiety_post) => Query("UPDATE anxiety SET anxiety_post = ? WHERE anxiety.anxiety_id = ?", [anxiety_post, anxiety_id]);
+//users 
+const Users_all = () => Query("select * from users");
+const Users_one = (User_id) => Query("select * from users where users.User_id = ?", [user_id]);
 
 
 
