@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import SentTemplate from "../components/SentTemplate.jsx";
 import RecievedTemplate from "../components/RecievedTemplate.jsx";
+import { text } from "body-parser";
 
 const AnxietyPage = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const AnxietyPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/anxiety/${id}`)
+    fetch(`http://localhost:3000/api/Anxiety/${id}`)
       .then((res) => res.json())
       .then((chirp) => {
         setMessage(chirp[0].content);
@@ -22,14 +23,14 @@ const AnxietyPage = () => {
   const handleMessageChange = (e) => setMessage(e.target.value);
 
   const deleteChirp = (id) => {
-    fetch(`http://localhost:3000/api/anxiety/${id}`, { method: "DELETE" })
+    fetch(`http://localhost:3000/api/Anxiety/${id}`, { method: "DELETE" })
       .then((res) => (res.ok ? navigate("/") : null))
       .catch((err) => console.log(err));
   };
 
-  const editChirp = (id, content) => {
+  const editChirp = (id, Anxiety_post) => {
     const editChirpBody = {
-      content: content,
+      content: Anxiety_post,
     };
 
     fetch(`http://localhost:3000/api/anxiety/${id}`, {
@@ -61,15 +62,17 @@ const AnxietyPage = () => {
                   <div className="input-group mb-0">
                     <div className="input-group-prepend">
                       <input
-                        type={"submit"}
+                        type="submit"
                         className="btn btn-primary"
                         id="submit-btn"
+                      
                       ></input>
                     </div>
                     <input
                       type="text"
                       className="form-control"
                       placeholder="Enter text here..."
+                      onChange={handleMessageChange}
                     />
                   </div>
                 </div>

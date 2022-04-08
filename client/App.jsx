@@ -11,9 +11,9 @@ const App = () => {
             <Routes>
                 //Add routes for pages
                 <Route path="/" element={<Home />} />
-                <Route path="/anxiety" element={<AnxietyPage />} />
-                <Route path="/adhd" element={<ADHDApp />} />
-                <Route path="/depression" element={<Depression />} />
+                <Route path="/Anxiety" element={<AnxietyPage />} />
+                <Route path="/Adhd" element={<ADHDApp />} />
+                <Route path="/Depression" element={<Depression />} />
                 <Route path="*" element={<h1 class="text-center">404 This page doesn't exist</h1>} />            
             </Routes>
         </BrowserRouter>
