@@ -7,6 +7,7 @@ import AnxietyPage from './pages/Anxiety.jsx';
 import DepressionPage from './pages/Depression.jsx';
 import ADHDPage from './pages/ADHD.jsx';
 import RagePage from './pages/Rage.jsx';
+import LoginApp from './LoginForm/Login.jsx';
 
 const App = () => {
 	return (
@@ -15,7 +16,8 @@ const App = () => {
 			<Navbar />
 			<Routes>
 				//Add routes for pages
-				<Route path='/' element={<Home />} />
+				<Route path='/' element={<LoginApp />} />
+				<Route path='/home' element={<Home />} />
 				<Route path='/adhd' element={<ADHDPage />} />
 				<Route path='/anxiety' element={<AnxietyPage />} />
 				<Route path='/depression' element={<DepressionPage />} />

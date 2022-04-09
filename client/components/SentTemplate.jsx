@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-const SentTemplate = () => {
-    const username = "Gage";
-    const content = "Hello World!";
-    const created = "Today, 12:11pm";
+const SentTemplate = ({username, message, created}) => {
+    // const username = "Gage"; //testing purposes
+    // const content = "Hello World!"; //testing purposes
+    // const created = "Today, 12:11pm"; //testing purposes
     return (
 		<>
 			{/* Will be new (SENT FROM USER) message template-------------------------------------------- */}
@@ -17,7 +17,7 @@ const SentTemplate = () => {
 						{created}
 					</span>
 				</div>
-				<div className='message my-message'>{content}</div>
+				<div className='message my-message'>{message}</div>
 			</li>
 			{/* End of (SENT FROM USER) message template------------------------------------------------- */}
 		</>

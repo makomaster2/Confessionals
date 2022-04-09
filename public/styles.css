@@ -193,3 +193,21 @@ body {
 		overflow-x: auto;
 	}
 }
+<<<<<<< HEAD
+=======
+
+#submit-btn {
+	box-shadow: none;
+}
+#submit-btn:hover {
+	background-color: #0037ff;
+}
+
+.nav-link {
+	color: white;
+}
+
+.nav-link:hover {
+	color: rgb(0, 0, 0);
+}
+>>>>>>> e9fe461be6fa9941ab42c20b8ebfbc4c5f63a8f9
