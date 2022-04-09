@@ -1,0 +1,12 @@
+.banner {
+    width: 100%;
+}
+
+.text-body {
+    background-color: whitesmoke;
+}
+
+.messages {
+    font-size: 16px;
+    text-align: left;
+}

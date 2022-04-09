@@ -8,3 +8,4 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../public/styles.css'
 
 render(<App />, document.getElementById("root"));
+
