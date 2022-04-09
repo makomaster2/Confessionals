@@ -1,44 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import SentTemplate from '../components/SentTemplate.jsx';
+import SentTemplate from '../components/SentTemplate.jsx'; // Commented out until server-side is done
 import RecievedTemplate from '../components/RecievedTemplate.jsx';
+// import uuidv4 from 'uuidv4';
 
 const ADHDPage = () => {
-	const navigate = useNavigate();
-	const [chirp, setChirp] = useState({});
+	const [username, setUsername] = useState('');
 	const [message, setMessage] = useState('');
-	const { id } = useParams();
+	const [chirps, setChirps] = useState([
+		{
+			id: 2,
+			username: 'Gage Jones',
+			message: 'I made a TicTacToe game using JavaScript!',
+		},
+		{
+			id: 3,
+			username: 'Branwin DuBose',
+			message: 'Me and my Doozer friends made an app called LogBook!',
+		},
+		{
+			id: 4,
+			username: 'Cody Jett',
+			message: 'Noone cares...',
+		},
+	]);
 
-	useEffect(() => {
-		fetch(`http://localhost:3000/api/ADHD/${id}`)
-			.then(res => res.json())
-			.then(chirp => {
-				setMessage(chirp[0].content);
-				setChirp(chirp[0]);
-			})
-			.catch(err => console.log(err));
-	}, []);
+	// const handleUsernameChange = e => setUsername(e.target.value);
 
 	const handleMessageChange = e => setMessage(e.target.value);
 
-	const deleteChirp = id => {
-		fetch(`http://localhost:3000/api/ADHD/${id}`, { method: 'DELETE' })
-			.then(res => (res.ok ? navigate('/') : null))
-			.catch(err => console.log(err));
-	};
+	const handleChirpSubmit = e => {
+		e.preventDefault();
 
-	const editChirp = (id, ADHD_post) => {
-		const editChirpBody = {
-			content: ADHD_post,
+		let newChirp = {
+			id: 1,
+			username: username,
+			message: message,
 		};
 
-		fetch(`http://localhost:3000/api/ADHD/${id}`, {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(editChirpBody),
-		})
-			.then(res => (res.ok ? navigate('/') : null))
-			.catch(err => console.log(err));
+		setChirps([...chirps, newChirp]);
 	};
 
 	return (
@@ -53,25 +53,35 @@ const ADHDPage = () => {
 									<ul className='m-b-0'>
 										<RecievedTemplate />
 
-										<SentTemplate />
+										{chirps.map(chirp => (
+										<SentTemplate 
+											key={chirp.id}
+											username={chirp.username}
+											message={chirp.message}
+										/>
+										))}
+										
 									</ul>
 								</div>
 								{/* Input for SENT messages */}
 								<div className='chat-message clearfix'>
-									<div className='input-group mb-0'>
+									<form className='input-group mb-0'>
 										<div className='input-group-prepend'>
 											<input
 												type={'submit'}
 												className='btn btn-primary'
 												id='submit-btn'
+												onClick={handleChirpSubmit}
 											></input>
 										</div>
 										<input
 											type='text'
 											className='form-control'
 											placeholder='Enter text here...'
+											value={message}
+											onChange={handleMessageChange}
 										/>
-									</div>
+									</form>
 								</div>
 							</div>
 						</div>

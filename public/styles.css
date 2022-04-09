@@ -203,3 +203,11 @@ body {
 #submit-btn:hover {
 	background-color: #0037ff;
 }
+
+.nav-link {
+	color: white;
+}
+
+.nav-link:hover {
+	color: rgb(0, 0, 0);
+}
