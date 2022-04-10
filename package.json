@@ -24,6 +24,7 @@
     "bootstrap": "^4.5.0",
     "css-loader": "^1.0.1",
     "express": "^4.16.4",
+    "file-loader": "^6.2.0",
     "mysql": "^2.18.1",
     "react": "^16.6.3",
     "react-bootstrap": "^2.2.3",

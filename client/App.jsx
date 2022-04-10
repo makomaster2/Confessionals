@@ -8,12 +8,16 @@ import DepressionPage from './pages/Depression.jsx';
 import ADHDPage from './pages/ADHD.jsx';
 import RagePage from './pages/Rage.jsx';
 import LoginApp from './LoginForm/Login.jsx';
+import img from '../client/images/banner.jpg';
 
 const App = () => {
 	return (
 		<BrowserRouter>
 			{/* adding depression page route */}
 			<Navbar />
+			<div className="container w-100">
+			<img className=' mt-5' id='banner' src={img} alt="" />
+			</div>
 			<Routes>
 				//Add routes for pages
 				<Route path='/' element={<LoginApp />} />
