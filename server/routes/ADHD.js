@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     try {
         const body = req.body;
 
-        const dbRes = await db.confession.ADHD_insert(body.ADHD_id, body.ADHDpost);
+        const dbRes = await db.confession.ADHD_insert(body.adhd_id, body.adhd_post);
         res.status(200).json(dbRes);
     } catch (error) {
         console.log(error)
@@ -52,7 +52,7 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try {
         const id = req.params.id;
-        const content = req.body.ADHDpost;
+        const content = req.body.adhd_post;
 
         const dbRes = await db.confession.ADHD_edit(id, content);
 

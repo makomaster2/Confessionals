@@ -7,7 +7,7 @@ import RecievedTemplate from '../components/RecievedTemplate.jsx';
 const ADHDPage = () => {
 	const [username, setUsername] = useState('');
 	const [message, setMessage] = useState('');
-	const [chirps, setChirps] = useState([
+	const [chirpss, setChirps] = useState([
 		{
 			id: 2,
 			username: 'Gage Jones',
@@ -24,22 +24,59 @@ const ADHDPage = () => {
 			message: 'Noone cares...',
 		},
 	]);
+	useEffect(() => {
+        fetchChirps();
+    }, []);
 
 	// const handleUsernameChange = e => setUsername(e.target.value);
 
 	const handleMessageChange = e => setMessage(e.target.value);
 
-	const handleChirpSubmit = e => {
+	const handleChirpSubmit = async (e) => {
 		e.preventDefault();
+		
 
-		let newChirp = {
-			id: 1,
-			username: username,
-			message: message,
-		};
+        const newUser = {
+            name: username
+        };
 
-		setChirps([...chirps, newChirp]);
-	};
+        const newUserRes = await fetch("http://localhost:3000/api/adhd", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newUser)
+        });
+
+        const newUserFromDB = await newUserRes.json();
+
+        const newChirp = {
+            id: newUserFromDB.adhd_id,
+            content: adhd_post,
+        };
+
+        const newChirpRes = await fetch("http://localhost:3000/api/adhd", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newChirp)
+        }) // POST request
+
+        console.log(await newChirpRes.json());
+        fetchChirps()
+    };
+
+	const fetchChirps = () => {
+        fetch("http://localhost:3000/api/adhd") // GET request
+            .then(res => res.json())
+            .then(chirpss => setChirps(chirpss.reverse()))
+            .catch(err => console.log(err));
+    };
+		// let newChirp = {
+		// 	id: 1,
+		// 	username: username,
+		// 	message: message,
+		// };
+
+		// setChirps([...chirps, newChirp]);
+	
 
 	return (
 		<>
@@ -53,11 +90,11 @@ const ADHDPage = () => {
 									<ul className='m-b-0'>
 										<RecievedTemplate />
 
-										{chirps.map(chirp => (
+										{chirpss.map(chirp => (
 										<SentTemplate 
-											key={chirp.id}
+											key={chirp.adhd_id}
 											username={chirp.username}
-											message={chirp.message}
+											message={chirp.adhd_post}
 										/>
 										))}
 										

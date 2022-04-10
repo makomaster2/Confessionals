@@ -5,8 +5,8 @@ import { Query } from "./index";
 const ADHD_all = () => Query("select * from adhd");
 const ADHD_one = (adhd_id) => Query("select * from adhd where adhd.adhd_id = ?", [adhd_id]);
 const ADHD_destroy = (adhd_id) => Query("delete from adhd where adhd.adhd_id = ?", [adhd_id]);
-const ADHD_insert = (adhd_id, adhd_post) => Query("insert into adhd (adhd_id, adhdpost) values (?, ?)", [adhd_id, adhd_post]);
-const ADHD_edit = (adhd_id, adhd_post) => Query("UPDATE adhd SET adhdpost = ? WHERE adhd.adhd_id = ?", [adhd_post, adhd_id]);
+const ADHD_insert = (adhd_id, adhd_post) => Query("insert into adhd (adhd_id, adhd_post) values (?, ?)", [adhd_id, adhd_post]);
+const ADHD_edit = (adhd_id, adhd_post) => Query("UPDATE adhd SET adhd_post = ? WHERE adhd.adhd_id = ?", [adhd_post, adhd_id]);
 //depression 
 const Depression_all = () => Query("select * from depression");
 const Depression_one = (depression_id) => Query("select * from depression where depression.depression_id = ?", [depression_id]);
@@ -27,7 +27,7 @@ const Anxiety_insert = (anxiety_id, anxiety_post) => Query("insert into anxiety 
 const Anxiety_edit = (anxiety_id, anxiety_post) => Query("UPDATE anxiety SET anxiety_post = ? WHERE anxiety.anxiety_id = ?", [anxiety_post, anxiety_id]);
 //users 
 const Users_all = () => Query("select * from users");
-const Users_one = (User_id) => Query("select * from users where users.User_id = ?", [user_id]);
+const Users_one = (user_id) => Query("select * from users where users.User_id = ?", [user_id]);
 
 
 

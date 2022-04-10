@@ -3,11 +3,17 @@ import React, { useState, useEffect } from 'react';
 const Home = () => {
 	const [username, setUsername] = useState('');
 
-	const handleUsernameChange = e => setUsername(e.target.value);
+	const handleUsernameChange = e => {
+		setUsername(e.target.value);
+		fetchUser();
 
-	const setUser = () => {
-		let tempUser = username;
-	};
+	}
+
+	const fetchUser = () => {
+        fetch("http://localhost:3000/api/users") // GET request
+            .then(res => res.json())
+            .then(username => setUsername(username))
+            .catch(err => console.log(err));
 
 	return (
 		<>

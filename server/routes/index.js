@@ -1,17 +1,17 @@
 import * as express from "express";
 const router = express.Router();
 
-import ADHDRouter from "./ADHD";
-import DepressionRouter from "./Depression";
-import RageRouter from "./Rage";
-import AnxietyRouter from "./Anxiety";
-import UsersRouter from "./Users";
+import ADHDRouter from "./adhd";
+import DepressionRouter from "./depression";
+import RageRouter from "./rage";
+import AnxietyRouter from "./anxiety";
+import UsersRouter from "./users";
 
 // localhost:3000/api/chirps/
-router.use("/ADHD", ADHDRouter);
-router.use("/Depression", DepressionRouter);
-router.use("/Rage", RageRouter);
-router.use("/Anxiety", AnxietyRouter);
-router.use("/Users", UsersRouter);
+router.use("/adhd", ADHDRouter);
+router.use("/depression", DepressionRouter);
+router.use("/rage", RageRouter);
+router.use("/anxiety", AnxietyRouter);
+router.use("/users", UsersRouter);
 
 export default router;
