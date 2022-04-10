@@ -43,6 +43,7 @@ const ADHDPage = () => {
 
 	return (
 		<>
+		<div id="logo"></div>
 			<div className='container'>
 				<div className='row clearfix'>
 					<div className='col-lg-12'>
