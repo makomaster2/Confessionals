@@ -14,7 +14,7 @@ const RecievedTemplate = () => {
 						{/* This is where the created time/date will go---------------------------------------- */}
 						{created}
 					</span>
-					<span className='mx-2 text-primary'>{username}</span>
+					<span className='mx-2 text-white'>{username}</span>
 				</div>
 				<div className='message other-message float-right'>
 					{' '}

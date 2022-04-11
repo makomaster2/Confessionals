@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `confessionals` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `confessionals` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `confessionals`;
 -- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
 --
@@ -31,7 +31,7 @@ CREATE TABLE `adhd` (
   `postdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`adhd_id`),
   CONSTRAINT `fk_useradhd` FOREIGN KEY (`adhd_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +57,7 @@ CREATE TABLE `anxiety` (
   `postdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`anxiety_id`),
   CONSTRAINT `fk_useranxiety` FOREIGN KEY (`anxiety_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +83,7 @@ CREATE TABLE `depression` (
   `postdate` varchar(45) DEFAULT 'CURRENT_TIMESTAMP',
   PRIMARY KEY (`depression_id`),
   CONSTRAINT `fk_userdepression` FOREIGN KEY (`depression_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +109,7 @@ CREATE TABLE `rage` (
   `postdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`rage_id`),
   CONSTRAINT `fk_userrage` FOREIGN KEY (`rage_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL DEFAULT 'Anonymous',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

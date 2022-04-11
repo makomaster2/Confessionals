@@ -18,8 +18,6 @@ const Home = () => {
 	return (
 		<>
 			<div className='container text-center'>
-				<div className='row'>Home Page</div>
-
 				<form action=''>
 					<input
 						type='text'

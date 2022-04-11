@@ -11,7 +11,7 @@ const SentTemplate = ({username, message, created}) => {
 			<li className='clearfix'>
 				<div className='message-data'>
 					{/* Span for (SENT FROM USER) username here---------------------------------------------------------------- */}
-					<span className='mx-2 text-primary'>{username}</span>
+					<span className='mx-2 text-white'>{username}</span>
 					<span className='message-data-time'>
 						{/* This is where the created time/date will go---------------------------------------- */}
 						{created}
