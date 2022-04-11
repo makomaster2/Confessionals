@@ -1,35 +1,28 @@
-body {
-	background-color: #1c1e22;
-	margin-top: 20px;
+/* #6b5b95 */
+/* #12130f */
+
+div#root {
+	background-color: rgb(0, 0, 0);
 }
+
+body {
+	background-color: black !important;
+}
+
 .card {
 	background: rgba(128, 128, 128, 0.349);
 	transition: 0.5s;
-	border: 0;
+	border: 2px blue!important;
 	margin-bottom: 30px;
 	border-radius: 0.55rem;
 	position: relative;
 	width: 100%;
-	box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+	box-shadow: 0 1px 2px rgb(0, 225, 255);
 }
-/* .chat-app .people-list {
-	width: 280px;
-	position: absolute;
-	left: 0;
-	top: 0;
-	padding: 20px;
-	z-index: 7;
-} */
 
 .chat .chat-header {
 	padding: 15px 20px;
 	border-bottom: 2px solid #f4f7f6;
-}
-
-.chat .chat-header img {
-	float: left;
-	border-radius: 40px;
-	width: 40px;
 }
 
 .chat .chat-header .chat-about {
@@ -39,7 +32,7 @@ body {
 
 .chat .chat-history {
 	padding: 20px;
-	border-bottom: 2px solid #fff;
+	border-bottom: 1px solid white;
 }
 
 .chat .chat-history ul {
@@ -65,7 +58,7 @@ body {
 }
 
 .chat .chat-history .message-data-time {
-	color: white;
+	color: gray;
 	padding-left: 6px;
 }
 
@@ -74,7 +67,7 @@ body {
 	padding: 18px 20px;
 	line-height: 26px;
 	font-size: 16px;
-	border-radius: 7px;
+	border-radius: 20px;
 	display: inline-block;
 	position: relative;
 }
@@ -88,13 +81,14 @@ body {
 	width: 0;
 	position: absolute;
 	pointer-events: none;
-	border-bottom-color: #fff;
+	border-bottom-color: #17a2f0;
 	border-width: 10px;
 	margin-left: -10px;
 }
 
 .chat .chat-history .my-message {
-	background: gray;
+	background: #17a2f0;
+	color: white;
 }
 
 .chat .chat-history .my-message:after {
@@ -106,18 +100,19 @@ body {
 	width: 0;
 	position: absolute;
 	pointer-events: none;
-	border-bottom-color: #efefef;
+	border-bottom-color: #17a2f0;
 	border-width: 10px;
 	margin-left: -10px;
 }
 
 .chat .chat-history .other-message {
-	background: gray;
+	background: #17a2f0;
+	color: white;
 	text-align: right;
 }
 
 .chat .chat-history .other-message:after {
-	border-bottom-color: #e8f1f3;
+	border-bottom-color: #17a2f0;
 	left: 90%;
 }
 
@@ -192,4 +187,37 @@ body {
 		height: calc(100vh - 350px);
 		overflow-x: auto;
 	}
+}
+
+#submit-btn {
+	box-shadow: none;
+}
+#submit-btn:hover {
+	background-color: #0037ff;
+}
+
+.nav-link {
+	color: white;
+}
+
+.nav-link:hover {
+	color: rgb(0, 0, 0);
+}
+
+#banner {
+	width: inherit;
+}
+
+#navBar {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+}
+
+.chat {
+	background-color: black;
+}
+
+input.form-control {
+	background: lightgray;
 }

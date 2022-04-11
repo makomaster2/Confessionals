@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import SentTemplate from '../components/SentTemplate.jsx'; // Commented out until server-side is done
 import RecievedTemplate from '../components/RecievedTemplate.jsx';
+
 // import uuidv4 from 'uuidv4';
 
 const ADHDPage = () => {
@@ -43,10 +44,11 @@ const ADHDPage = () => {
 
 	return (
 		<>
+		
 			<div className='container'>
 				<div className='row clearfix'>
 					<div className='col-lg-12'>
-						<div className='card chat-app'>
+						<div id='chat' className='card chat-app'>
 							<div className='chat'>
 								<div className='chat-history'>
 									{/* Messages are stored in this unordered list. New messages will be added to list items in this list */}

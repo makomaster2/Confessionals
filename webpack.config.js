@@ -6,22 +6,22 @@ let serverConfig = {
 	entry: './server/server.js',
 	output: {
 		path: path.join(__dirname, './dist/'),
-		filename: 'server.js'
+		filename: 'server.js',
 	},
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
 				use: 'babel-loader',
-				exclude: /node_modules/
-			}
-		]
+				exclude: /node_modules/,
+			},
+		],
 	},
 	externals: [nodeExternals()],
 	target: 'node',
 	node: {
-		__dirname: false
-	}
+		__dirname: false,
+	},
 };
 
 let clientConfig = {
@@ -29,7 +29,7 @@ let clientConfig = {
 	entry: './client/index.jsx',
 	output: {
 		path: path.join(__dirname, './public/js/'),
-		filename: 'app.js'
+		filename: 'app.js',
 	},
 	module: {
 		rules: [
@@ -39,16 +39,27 @@ let clientConfig = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env', '@babel/preset-react']
-					}
-				}
+						presets: ['@babel/preset-env', '@babel/preset-react'],
+					},
+				},
 			},
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
-			}
-		]
-	}
+				use: ['style-loader', 'css-loader'],
+			},
+			{
+				test: /\.(png|jpe?g|gif)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							outputPath: '../images'
+						}
+					},
+				],
+			},
+		],
+	},
 };
 
 module.exports = [serverConfig, clientConfig];
