@@ -1,9 +1,9 @@
 body {
-	background-color: #f4f7f6;
+	background-color: #1c1e22;
 	margin-top: 20px;
 }
 .card {
-	background: #fff;
+	background: rgba(128, 128, 128, 0.349);
 	transition: 0.5s;
 	border: 0;
 	margin-bottom: 30px;
@@ -65,12 +65,12 @@ body {
 }
 
 .chat .chat-history .message-data-time {
-	color: #434651;
+	color: white;
 	padding-left: 6px;
 }
 
 .chat .chat-history .message {
-	color: #444;
+	color: white;
 	padding: 18px 20px;
 	line-height: 26px;
 	font-size: 16px;
@@ -94,7 +94,7 @@ body {
 }
 
 .chat .chat-history .my-message {
-	background: #efefef;
+	background: gray;
 }
 
 .chat .chat-history .my-message:after {
@@ -112,7 +112,7 @@ body {
 }
 
 .chat .chat-history .other-message {
-	background: #e8f1f3;
+	background: gray;
 	text-align: right;
 }
 
@@ -193,21 +193,3 @@ body {
 		overflow-x: auto;
 	}
 }
-<<<<<<< HEAD
-=======
-
-#submit-btn {
-	box-shadow: none;
-}
-#submit-btn:hover {
-	background-color: #0037ff;
-}
-
-.nav-link {
-	color: white;
-}
-
-.nav-link:hover {
-	color: rgb(0, 0, 0);
-}
->>>>>>> e9fe461be6fa9941ab42c20b8ebfbc4c5f63a8f9
