@@ -40,6 +40,7 @@ const AnxietyPage = () => {
 		};
 
 		setChirps([...chirps, newChirp]);
+		setMessage('');
 	};
 
 	return (
