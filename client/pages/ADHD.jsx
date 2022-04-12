@@ -10,19 +10,24 @@ const ADHDPage = () => {
 	const [message, setMessage] = useState('');
 	const [postsReceived, setPostsReceived] = useState([]);
 	const [postsSent, setPostsSent] = useState([]);
-
+	
 	useEffect(() => {
-		fetchPosts();
+		fetchPosts(true);
+		setInterval(() => {
+			fetchPosts(false);
+		}, 5000);
 	}, []);
-
+	
 	// const handleUsernameChange = e => setUsername(e.target.value);
-
-	const fetchPosts = async () => {
+	
+	const fetchPosts = async (firstTimeLoading) => {
+		let history = document.getElementById('chat-history');
+		let shouldScroll = firstTimeLoading || history.scrollTop === history.scrollHeight;
 		const data = await fetch('/api/adhd');
 		const posts = await data.json();
 		let received = [];
 		let sent = [];
-
+		
 		posts.forEach(post => {
 			if (post.user_id == userID) {
 				sent.push(post);
@@ -30,9 +35,13 @@ const ADHDPage = () => {
 				received.push(post);
 			}
 		});
-
+		
 		setPostsReceived(received);
 		setPostsSent(sent);
+
+		// scroll to bottom after updates, only if the user is already at bottom
+		if (shouldScroll)
+			history.scrollTop = history.scrollHeight;
 	};
 
 	const handleMessageChange = e => setMessage(e.target.value);
@@ -67,7 +76,7 @@ const ADHDPage = () => {
 					<div className='col-lg-12'>
 						<div id='chat' className='card chat-app'>
 							<div className='chat'>
-								<div className='chat-history'>
+								<div id="chat-history" className='chat-history'>
 									{/* Messages are stored in this unordered list. New messages will be added to list items in this list */}
 									<ul className='m-b-0'>
 										{postsReceived.map(post => (

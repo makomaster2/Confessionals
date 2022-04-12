@@ -6,7 +6,7 @@ import doorImg from '../images/door.jpg';
 const Navbar = () => {
 	
 	return (
-		<div class='wrapper'>
+		<div id='' class='wrapper'>
 			<header>
 				<nav>
 					<div class='menu-icon'>
@@ -16,7 +16,7 @@ const Navbar = () => {
 					<div class='menu'>
 						<ul>
 							<li>
-								<NavLink to={'/'}>Home</NavLink>
+								<NavLink to={'/home'}>Home</NavLink>
 							</li>
 							<li>
 								<NavLink to={'/adhd'}>ADHD</NavLink>

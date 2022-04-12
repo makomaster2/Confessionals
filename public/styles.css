@@ -35,7 +35,12 @@ body {
 	border-bottom: 1px solid rgb(0, 225, 255);
 	border-top: 1px solid rgb(0, 225, 255);
 	border-radius: 1%;
+	
 }
+
+.chat .chat-history::-webkit-scrollbar {
+	display: none;
+  }
 
 .chat .chat-history ul {
 	padding: 0;
@@ -115,7 +120,7 @@ body {
 
 .chat .chat-history .other-message:after {
 	border-bottom-color: #17a2f0;
-	left: 90%;
+	left: 75%;
 }
 
 .chat .chat-message {
@@ -172,11 +177,11 @@ body {
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 	.chat-app .chat-list {
 		height: 650px;
-		overflow-x: auto;
+		overflow-x: hidden;
 	}
 	.chat-app .chat-history {
 		height: 600px;
-		overflow-x: auto;
+		overflow-x: hidden;
 	}
 }
 
@@ -226,6 +231,8 @@ body {
 input.form-control {
 	background: lightgray;
 }
+
+/* NavBar Styles */
 
 html, body {
 	margin: 0;
@@ -348,4 +355,10 @@ nav ul li a {
 #doorImg {
 	width: 65px;
 	filter: invert(1);
+}
+
+footer h5 {
+	border: 1px solid white;
+    color: red;
+    padding: 1.5em;
 }
