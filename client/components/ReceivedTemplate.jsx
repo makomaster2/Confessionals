@@ -1,9 +1,9 @@
+
+
 import React from 'react';
 
-const RecievedTemplate = () => {
-	const username = 'Branwin';
-	const content = 'Hello World! sdfasdfasdfasdfa sdfasdfasdfasdfasdfasdf';
-	const created = 'Today, 12:11pm';
+const RecievedTemplate = ({username, created, message}) => {
+
 	return (
 		<>
 			{/* Will be new (RECIEVED FROM OTHER) message template-------------------------------------------- */}
@@ -18,7 +18,7 @@ const RecievedTemplate = () => {
 				</div>
 				<div className='message other-message float-right'>
 					{' '}
-					{content}{' '}
+					{message}{' '}
 				</div>
 			</li>
 			{/* End of (RECIEVED FROM OTHER) message template------------------------------------------------- */}

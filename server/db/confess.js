@@ -2,10 +2,10 @@
 
 import { Query } from "./index";
 //adhd 
-const ADHD_all = () => Query("select * from adhd");
+const ADHD_all = () => Query("select adhd.*, users.* from adhd join users on adhd.user_id = users.user_id order by adhd_id asc");
 const ADHD_one = (adhd_id) => Query("select * from adhd where adhd.adhd_id = ?", [adhd_id]);
 const ADHD_destroy = (adhd_id) => Query("delete from adhd where adhd.adhd_id = ?", [adhd_id]);
-const ADHD_insert = (adhd_id, adhd_post) => Query("insert into adhd (adhd_id, adhdpost) values (?, ?)", [adhd_id, adhd_post]);
+const ADHD_insert = (adhd_id, adhd_post) => Query("insert into adhd (user_id, adhd_post) values (?, ?)", [adhd_id, adhd_post]);
 const ADHD_edit = (adhd_id, adhd_post) => Query("UPDATE adhd SET adhdpost = ? WHERE adhd.adhd_id = ?", [adhd_post, adhd_id]);
 //depression 
 const Depression_all = () => Query("select * from depression");

@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `confessionals` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `confessionals` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `confessionals`;
--- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: confessionals
+-- Host: localhost    Database: confessionals
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	5.7.37-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,13 +25,14 @@ DROP TABLE IF EXISTS `adhd`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `adhd` (
-  `adhd_id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL DEFAULT 'Anonymous',
+  `adhd_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `adhd_post` varchar(800) NOT NULL,
   `postdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`adhd_id`),
-  CONSTRAINT `fk_useradhd` FOREIGN KEY (`adhd_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `fk_userid_idx` (`user_id`),
+  CONSTRAINT `fk_userid` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +41,7 @@ CREATE TABLE `adhd` (
 
 LOCK TABLES `adhd` WRITE;
 /*!40000 ALTER TABLE `adhd` DISABLE KEYS */;
+INSERT INTO `adhd` VALUES (8,1,'Hey everyone!','2022-04-12 09:39:31'),(9,2,'I\'m not feeling like myself today','2022-04-12 09:39:31'),(10,3,'Let\'s talk about that','2022-04-12 09:39:31'),(11,4,'I\'m not sure if I\'m ready','2022-04-12 09:39:31'),(12,5,'You\'ve got this, I believe in you','2022-04-12 09:39:31'),(13,3,'I feel better already','2022-04-12 09:39:31'),(14,4,'You inspired me to share my story and open up about my feelings','2022-04-12 09:39:31'),(15,1,'I am also sad','2022-04-12 09:49:46'),(16,1,'asdfsdfsdf','2022-04-12 10:26:08'),(17,1,'cvbcvbcvb','2022-04-12 10:26:14'),(18,1,'cvbcvb','2022-04-12 10:26:28');
 /*!40000 ALTER TABLE `adhd` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,13 +53,13 @@ DROP TABLE IF EXISTS `anxiety`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anxiety` (
-  `anxiety_id` int NOT NULL AUTO_INCREMENT,
+  `anxiety_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL DEFAULT 'Anonymous',
   `anxiety_post` varchar(800) NOT NULL,
   `postdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`anxiety_id`),
   CONSTRAINT `fk_useranxiety` FOREIGN KEY (`anxiety_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,13 +79,13 @@ DROP TABLE IF EXISTS `depression`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `depression` (
-  `depression_id` int NOT NULL AUTO_INCREMENT,
+  `depression_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL DEFAULT 'Anonymous',
   `depression_post` varchar(800) NOT NULL,
   `postdate` varchar(45) DEFAULT 'CURRENT_TIMESTAMP',
   PRIMARY KEY (`depression_id`),
   CONSTRAINT `fk_userdepression` FOREIGN KEY (`depression_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,13 +105,13 @@ DROP TABLE IF EXISTS `rage`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rage` (
-  `rage_id` int NOT NULL AUTO_INCREMENT,
+  `rage_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL DEFAULT 'Anonymous',
   `rage_post` varchar(800) NOT NULL,
   `postdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`rage_id`),
   CONSTRAINT `fk_userrage` FOREIGN KEY (`rage_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,10 +131,10 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `user_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL DEFAULT 'Anonymous',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,6 +143,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'TheRealDrake'),(2,'IAMSAD'),(3,'TheRealGage'),(4,'TheRealJosh'),(5,'TheRealGarfield');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -153,4 +156,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-08 15:03:41
+-- Dump completed on 2022-04-12 10:30:04

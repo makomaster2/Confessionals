@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     try {
         const body = req.body;
 
-        const dbRes = await db.confession.ADHD_insert(body.ADHD_id, body.ADHDpost);
+        const dbRes = await db.confession.ADHD_insert(body.user_id, body.adhd_post);
         res.status(200).json(dbRes);
     } catch (error) {
         console.log(error)
