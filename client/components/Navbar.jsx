@@ -1,39 +1,39 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import doorImg from '../images/door.jpg';
+
 
 const Navbar = () => {
+	
 	return (
-		<div className='nav justify-content-around p-2 bg-danger mb-2' id='navBar'>
-			<NavLink
-				to='/'
-				className={({ isActive }) => `nav-link ${isActive && 'active'}`}
-			>
-				Home
-			</NavLink>
-			<NavLink
-				to='/depression'
-				className={({ isActive }) => `nav-link ${isActive && 'active'}`}
-			>
-				Depression
-			</NavLink>
-			<NavLink
-				to='/adhd'
-				className={({ isActive }) => `nav-link ${isActive && 'active'}`}
-			>
-				ADHD
-			</NavLink>
-			<NavLink
-				to='/anxiety'
-				className={({ isActive }) => `nav-link ${isActive && 'active'}`}
-			>
-				Anxiety
-			</NavLink>
-			<NavLink
-				to='/rage'
-				className={({ isActive }) => `nav-link ${isActive && 'active'}`}
-			>
-				Rage
-			</NavLink>
+		<div class='wrapper'>
+			<header>
+				<nav>
+					<div class='menu-icon'>
+						<i class='fa fa-bars fa-2x'></i>
+					</div>
+					<div class='logo'><img id='doorImg' src={doorImg} alt="" /></div>
+					<div class='menu'>
+						<ul>
+							<li>
+								<NavLink to={'/'}>Home</NavLink>
+							</li>
+							<li>
+								<NavLink to={'/adhd'}>ADHD</NavLink>
+							</li>
+							<li>
+								<NavLink to={'/depression'}>Depression</NavLink>
+							</li>
+							<li>
+								<NavLink to={'/anxiety'}>Anxiety</NavLink>
+							</li>
+							<li>
+								<NavLink to={'/rage'}>Rage</NavLink>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
 		</div>
 	);
 };
