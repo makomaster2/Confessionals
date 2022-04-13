@@ -15,11 +15,18 @@ const Home = () => {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ name: username}),
+			body: JSON.stringify({ name: username }),
 		});
 		let newUserId = await newUserResponse.json();
 		localStorage.setItem(USERKEY, newUserId);
 		// TODO redirect to a chatroom or something
+	};
+
+	const userChanged = () => {
+		let changeLabel = document.getElementById('changedUser');
+		let nameInput = document.getElementById('nameInput');
+		nameInput.value = '';
+		changeLabel.style.visibility = 'visible';
 	};
 
 	return (
@@ -31,13 +38,21 @@ const Home = () => {
 				<form onSubmit={handleFormSubmit}>
 					<input
 						type='text'
-						name='name'
-						id=''
+						name='nameInput'
+						id='nameInput'
 						onChange={handleUsernameChange}
 						value={username}
-						className='m-5'
+						className='mx-5 mt-5'
 					/>
-					<button>Set Username</button>
+					<label
+						style={{ visibility: 'hidden' }}
+						id='changedUser'
+						for='nameInput'
+					>
+						Username Changed
+					</label>
+					<button onClick={userChanged}>Change Username</button>
+					{/* <span id='changed' style={{'color': 'white'}}>Username Changed</span> */}
 				</form>
 
 				<link></link>

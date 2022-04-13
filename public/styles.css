@@ -71,7 +71,7 @@ body {
 
 .chat .chat-history .message {
 	color: #444;
-	padding: 18px 20px;
+	padding: 5px 20px;
 	line-height: 26px;
 	font-size: 16px;
 	border-radius: 20px;
@@ -229,7 +229,13 @@ body {
 }
 
 input.form-control {
-	background: lightgray;
+	background-color: black;
+	color: white;
+}
+
+input.form-control:focus {
+	background-color: black;
+	color: white;
 }
 
 /* NavBar Styles */
@@ -360,7 +366,9 @@ nav ul li a {
 footer h5 {
 	border: 1px solid white;
     color: red;
-    padding: 1.5em;
+    padding: 1.6em;
+	font-size: 11pt;
+    font-weight: 400;
 }
 
 #banner1 {
@@ -369,6 +377,13 @@ footer h5 {
 }
 
 #chat-history {
-	height: 60vh;
+	height: 50vh;
 	overflow: scroll;
 }
+
+#changedUser {
+	display: inline-block;
+	width: 100%;
+	color: rgb(0, 255, 0);
+}
+

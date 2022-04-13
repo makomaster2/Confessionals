@@ -9,14 +9,14 @@ import { USERKEY } from '../constants.js';
 const ADHDPage = () => {
 	const [userID, setUserID] = useState(localStorage.getItem(USERKEY));
 	const [message, setMessage] = useState('');
-	const [postsReceived, setPostsReceived] = useState([]);
-	const [postsSent, setPostsSent] = useState([]);
+	const [posts, setPosts] = useState([]);
+	//const [postsSent, setPostsSent] = useState([]);
 	
 	useEffect(() => {
 		fetchPosts(true);
 		setInterval(() => {
 			fetchPosts(false);
-		}, 5000);
+		}, 1000);
 	}, []);
 	
 	// const handleUsernameChange = e => setUsername(e.target.value);
@@ -26,19 +26,20 @@ const ADHDPage = () => {
 		let shouldScroll = forceScroll || history.scrollTop === history.scrollHeight;
 		const data = await fetch('/api/adhd');
 		const posts = await data.json();
-		let received = [];
-		let sent = [];
+		setPosts(posts.sort((a, b) => new Date(a.postdate) - new Date(b.postdate)));
+		// let received = [];
+		// let sent = [];
 		
-		posts.forEach(post => {
-			if (post.user_id == userID) {
-				sent.push(post);
-			} else {
-				received.push(post);
-			}
-		});
+		// posts.forEach(post => {
+		// 	if (post.user_id == userID) {
+		// 		sent.push(post);
+		// 	} else {
+		// 		received.push(post);
+		// 	}
+		// });
 		
-		setPostsReceived(received);
-		setPostsSent(sent);
+		// setPostsReceived(received);
+		// setPostsSent(sent);
 
 		// scroll to bottom after updates, only if the user is already at bottom
 		if (shouldScroll)
@@ -79,15 +80,13 @@ const ADHDPage = () => {
 								<div id="chat-history" className='chat-history'>
 									{/* Messages are stored in this unordered list. New messages will be added to list items in this list */}
 									<ul className='m-b-0'>
-										{postsReceived.map(post => (
+										{posts.map(post => post.user_id != userID ? (
 											<RecievedTemplate
 												key={post.adhd_id}
 												username={post.username}
 												message={post.adhd_post}
 											/>
-										))}
-
-										{postsSent.map(post => (
+										) : (
 											<SentTemplate
 												key={post.adhd_id}
 												username={post.username}

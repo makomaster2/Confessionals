@@ -2,42 +2,44 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import SentTemplate from '../components/ReceivedTemplate.jsx'; // Commented out until server-side is done
 import RecievedTemplate from '../components/SentTemplate.jsx';
+import { USERKEY } from '../constants.js';
 
 // import uuidv4 from 'uuidv4';
 
 const RagePage = () => {
-	const [userID, setUserID] = useState(1);
+	const [userID, setUserID] = useState(localStorage.getItem(USERKEY));
 	const [message, setMessage] = useState('');
-	const [postsReceived, setPostsReceived] = useState([]);
-	const [postsSent, setPostsSent] = useState([]);
+	const [posts, setPosts] = useState([]);
+	//const [postsSent, setPostsSent] = useState([]);
 	
 	useEffect(() => {
 		fetchPosts(true);
 		setInterval(() => {
 			fetchPosts(false);
-		}, 5000);
+		}, 1000);
 	}, []);
 	
 	// const handleUsernameChange = e => setUsername(e.target.value);
 	
-	const fetchPosts = async (firstTimeLoading) => {
+	const fetchPosts = async (forceScroll) => {
 		let history = document.getElementById('chat-history');
-		let shouldScroll = firstTimeLoading || history.scrollTop === history.scrollHeight;
+		let shouldScroll = forceScroll || history.scrollTop === history.scrollHeight;
 		const data = await fetch('/api/rage');
 		const posts = await data.json();
-		let received = [];
-		let sent = [];
+		setPosts(posts.sort((a, b) => new Date(a.postdate) - new Date(b.postdate)));
+		// let received = [];
+		// let sent = [];
 		
-		posts.forEach(post => {
-			if (post.user_id == userID) {
-				sent.push(post);
-			} else {
-				received.push(post);
-			}
-		});
+		// posts.forEach(post => {
+		// 	if (post.user_id == userID) {
+		// 		sent.push(post);
+		// 	} else {
+		// 		received.push(post);
+		// 	}
+		// });
 		
-		setPostsReceived(received);
-		setPostsSent(sent);
+		// setPostsReceived(received);
+		// setPostsSent(sent);
 
 		// scroll to bottom after updates, only if the user is already at bottom
 		if (shouldScroll)
@@ -51,7 +53,6 @@ const RagePage = () => {
 
 		let newPost = {
 			user_id: userID,
-			username: 'TheRealJosh',
 			rage_post: message,
 		};
 
@@ -79,15 +80,13 @@ const RagePage = () => {
 								<div id="chat-history" className='chat-history'>
 									{/* Messages are stored in this unordered list. New messages will be added to list items in this list */}
 									<ul className='m-b-0'>
-										{postsReceived.map(post => (
+										{posts.map(post => post.user_id != userID ? (
 											<RecievedTemplate
 												key={post.rage_id}
 												username={post.username}
 												message={post.rage_post}
 											/>
-										))}
-
-										{postsSent.map(post => (
+										) : (
 											<SentTemplate
 												key={post.rage_id}
 												username={post.username}
