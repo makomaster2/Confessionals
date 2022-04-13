@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import imageBanner from "../images/banner1.jpg";
+import { USERKEY } from '../constants';
+import imageBanner from '../images/banner1.jpg';
 
 const Home = () => {
 	const [username, setUsername] = useState('');
 
 	const handleUsernameChange = e => setUsername(e.target.value);
 
-	const setUser = () => {
-		let tempUser = username;
+	const handleFormSubmit = async e => {
+		e.preventDefault(); // don't submit the form
+		let newUserResponse = await fetch('/api/users', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ name: username}),
+		});
+		let newUserId = await newUserResponse.json();
+		localStorage.setItem(USERKEY, newUserId);
+		// TODO redirect to a chatroom or something
 	};
 
 	return (
 		<>
-		<div className="container">
-			<img id='banner1' src={imageBanner} alt="" />
-		</div>
+			<div className='container'>
+				<img id='banner1' src={imageBanner} alt='' />
+			</div>
 			<div className='container text-center'>
-				<form action=''>
+				<form onSubmit={handleFormSubmit}>
 					<input
 						type='text'
 						name='name'
@@ -25,7 +37,7 @@ const Home = () => {
 						value={username}
 						className='m-5'
 					/>
-					<button onClick={setUser}>Set Username</button>
+					<button>Set Username</button>
 				</form>
 
 				<link></link>

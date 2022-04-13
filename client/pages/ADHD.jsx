@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import SentTemplate from '../components/ReceivedTemplate.jsx'; // Commented out until server-side is done
 import RecievedTemplate from '../components/SentTemplate.jsx';
+import { USERKEY } from '../constants.js';
 
 // import uuidv4 from 'uuidv4';
 
 const ADHDPage = () => {
-	const [userID, setUserID] = useState(1);
+	const [userID, setUserID] = useState(localStorage.getItem(USERKEY));
 	const [message, setMessage] = useState('');
 	const [postsReceived, setPostsReceived] = useState([]);
 	const [postsSent, setPostsSent] = useState([]);
@@ -20,9 +21,9 @@ const ADHDPage = () => {
 	
 	// const handleUsernameChange = e => setUsername(e.target.value);
 	
-	const fetchPosts = async (firstTimeLoading) => {
+	const fetchPosts = async (forceScroll) => {
 		let history = document.getElementById('chat-history');
-		let shouldScroll = firstTimeLoading || history.scrollTop === history.scrollHeight;
+		let shouldScroll = forceScroll || history.scrollTop === history.scrollHeight;
 		const data = await fetch('/api/adhd');
 		const posts = await data.json();
 		let received = [];
@@ -51,7 +52,6 @@ const ADHDPage = () => {
 
 		let newPost = {
 			user_id: userID,
-			username: 'TheRealDrake',
 			adhd_post: message,
 		};
 

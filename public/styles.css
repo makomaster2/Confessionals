@@ -367,3 +367,8 @@ footer h5 {
 	width: inherit;
 	filter: invert();
 }
+
+#chat-history {
+	height: 60vh;
+	overflow: scroll;
+}

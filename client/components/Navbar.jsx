@@ -6,14 +6,14 @@ import doorImg from '../images/door.jpg';
 const Navbar = () => {
 	
 	return (
-		<div id='' class='wrapper'>
+		<div id='' className='wrapper'>
 			<header>
 				<nav>
-					<div class='menu-icon'>
-						<i class='fa fa-bars fa-2x'></i>
+					<div className='menu-icon'>
+						<i className='fa fa-bars fa-2x'></i>
 					</div>
-					<div class='logo'><img id='doorImg' src={doorImg} alt="" /></div>
-					<div class='menu'>
+					<div className='logo'><img id='doorImg' src={doorImg} alt="" /></div>
+					<div className='menu'>
 						<ul>
 							<li>
 								<NavLink to={'/home'}>Home</NavLink>

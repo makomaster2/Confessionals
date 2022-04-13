@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     try {
         const body = req.body;
 
-        const dbRes = await db.confession.Depression_insert(body.Depression_id, body.Depression_post);
+        const dbRes = await db.confession.Depression_insert(body.user_id, body.depression_post);
         res.status(200).send(dbRes);
     } catch (error) {
         console.log(error)

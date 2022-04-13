@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     try {
         const body = req.body;
 
-        const dbRes = await db.confession.Anxiety_insert(body.Anxiety_id, body.Anxiety_post);
+        const dbRes = await db.confession.Anxiety_insert(body.user_id, body.anxiety_post);
         res.status(200).json(dbRes);
     } catch (error) {
         console.log(error)

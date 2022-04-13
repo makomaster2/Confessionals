@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     try {
         const body = req.body;
 
-        const dbRes = await db.confession.Rage_insert(body.Rage_id, body.Rage_post);
+        const dbRes = await db.confession.Rage_insert(body.user_id, body.rage_post);
         res.status(200).json(dbRes);
     } catch (error) {
         console.log(error)

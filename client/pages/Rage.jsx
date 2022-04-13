@@ -51,7 +51,7 @@ const RagePage = () => {
 
 		let newPost = {
 			user_id: userID,
-			username: 'TheRealDrake',
+			username: 'TheRealJosh',
 			rage_post: message,
 		};
 

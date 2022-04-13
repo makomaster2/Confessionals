@@ -51,7 +51,7 @@ const DepressionPage = () => {
 
 		let newPost = {
 			user_id: userID,
-			username: 'TheRealDrake',
+			username: 'TheRealGarrett',
 			depression_post: message,
 		};
 
