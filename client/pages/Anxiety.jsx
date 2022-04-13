@@ -5,7 +5,7 @@ import RecievedTemplate from '../components/SentTemplate.jsx';
 
 // import uuidv4 from 'uuidv4';
 
-const ADHDPage = () => {
+const AnxietyPage = () => {
 	const [userID, setUserID] = useState(1);
 	const [message, setMessage] = useState('');
 	const [postsReceived, setPostsReceived] = useState([]);
@@ -18,7 +18,7 @@ const ADHDPage = () => {
 	// const handleUsernameChange = e => setUsername(e.target.value);
 
 	const fetchPosts = async () => {
-		const data = await fetch('/api/adhd');
+		const data = await fetch('/api/anxiety');
 		const posts = await data.json();
 		let received = [];
 		let sent = [];
@@ -43,10 +43,10 @@ const ADHDPage = () => {
 		let newPost = {
 			user_id: userID,
 			username: 'TheRealDrake',
-			adhd_post: message,
+			anxiety_post: message,
 		};
 
-		const res = await fetch("/api/adhd", {
+		const res = await fetch("/api/anxiety", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
@@ -72,17 +72,17 @@ const ADHDPage = () => {
 									<ul className='m-b-0'>
 										{postsReceived.map(post => (
 											<RecievedTemplate
-												key={post.adhd_id}
+												key={post.anxiety_id}
 												username={post.username}
-												message={post.adhd_post}
+												message={post.anxiety_post}
 											/>
 										))}
 
 										{postsSent.map(post => (
 											<SentTemplate
-												key={post.adhd_id}
+												key={post.anxiety_id}
 												username={post.username}
-												message={post.adhd_post}
+												message={post.anxiety_post}
 											/>
 										))}
 									</ul>
