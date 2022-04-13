@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import imageBanner from "../images/banner1.jpg";
 
 const Home = () => {
 	const [username, setUsername] = useState('');
@@ -11,6 +12,9 @@ const Home = () => {
 
 	return (
 		<>
+		<div className="container">
+			<img id='banner1' src={imageBanner} alt="" />
+		</div>
 			<div className='container text-center'>
 				<form action=''>
 					<input
